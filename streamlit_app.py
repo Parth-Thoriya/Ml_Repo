@@ -81,6 +81,7 @@ def main():
             selected_data = df.iloc[selected_index][["AT", "V", "AP", "RH"]].tolist()
             dummy_data = ", ".join(map(str, selected_data))
             st.write(f"Selected Data: `{dummy_data}`")
+    dummy_data
     input_data = st.text_input("Enter input data as a comma-separated list (e.g., 28.66,   77.95, 1009.56,   69.07)")
 
     if input_data:
