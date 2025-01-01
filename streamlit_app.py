@@ -49,7 +49,7 @@ def main():
             # Run prediction
             predictions = run_inference(interpreter, input_data)
 
-            st.success(f"Predictions: {predictions.tolist()}")
+            st.success(f"Net hourly electrical energy output by your power plant in MW is : {predictions.toString()}")
         except Exception as e:
             st.error(f"Error: {e}")
 
