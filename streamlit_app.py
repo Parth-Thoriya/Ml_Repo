@@ -52,6 +52,35 @@ def main():
         - The Vacuum is collected from and affects the Steam Turbine.
         - The other three ambient variables impact the GT performance.
         """)
+    data = {
+    "AT": [8.34, 23.64, 29.74, 19.07],
+    "V": [40.77, 58.49, 56.9, 49.69],
+    "AP": [1010.84, 1011.4, 1007.15, 1007.22],
+    "RH": [90.01, 74.2, 41.91, 76.79],
+    "PE": [480.48, 445.75, 438.76, 453.09],  # Output column
+    }
+    df = pd.DataFrame(data)
+
+    # Set the title of the app
+    st.title("Power Plant Data Selection")
+
+    # Add an expander for trial data
+    with st.expander("Trial Data"):
+        st.write("Select a row of input data (AT, V, AP, RH):")
+        st.dataframe(df[["AT", "V", "AP", "RH"]])
+        
+        # Dropdown to select a row by index
+        selected_index = st.selectbox(
+            "Select Row Index",
+            options=range(len(df)),
+            format_func=lambda x: f"Row {x + 1}: {df.iloc[x][['AT', 'V', 'AP', 'RH']].to_dict()}",
+        )
+    
+        # Create a comma-separated string from the selected row
+        if selected_index is not None:
+            selected_data = df.iloc[selected_index][["AT", "V", "AP", "RH"]].tolist()
+            dummy_data = ", ".join(map(str, selected_data))
+            st.write(f"Selected Data: `{dummy_data}`")
     input_data = st.text_input("Enter input data as a comma-separated list (e.g., 28.66,   77.95, 1009.56,   69.07)")
 
     if input_data:
