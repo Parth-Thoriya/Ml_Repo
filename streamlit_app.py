@@ -33,10 +33,10 @@ def run_inference(interpreter, input_data):
 
 # Streamlit Interface
 def main():
-    st.title("TFLite Model Prediction")
-    st.write("Provide input data to make predictions using the local TFLite model.")
-
-    input_data = st.text_input("Enter input data as a comma-separated list (e.g., 0.1, 0.5, 0.3)")
+    st.title("Combined Cycle Power Plant")
+    st.write("Make Predictions using : Artificial Neural Network.")
+    
+    input_data = st.text_input("Enter input data as a comma-separated list (e.g., 28.66,   77.95, 1009.56,   69.07)")
 
     if input_data:
         try:
