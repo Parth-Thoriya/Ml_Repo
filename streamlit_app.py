@@ -82,7 +82,38 @@ def main():
             dummy_data = ", ".join(map(str, selected_data))
             st.write(f"Selected Data: `{dummy_data}`")
    
-    input_data = st.text_input("Enter input data as a comma-separated list (e.g., 28.66,   77.95, 1009.56,   69.07)")
+    # input_data = st.text_input("Enter input data as a comma-separated list (e.g., 28.66,   77.95, 1009.56,   69.07)")
+
+
+    with st.form("input_form"):
+        st.header("Enter the Parameters")
+
+        # Input fields
+        temperature = st.number_input("Temperature (°C):", min_value=-50.0, max_value=50.0, value=25.0)
+        pressure = st.number_input("Ambient Pressure (mbar):", min_value=800.0, max_value=1200.0, value=1010.0)
+        humidity = st.number_input(
+            "Relative Humidity (%):",
+            min_value=25.56,
+            max_value=100.0,
+            value=75.0,
+        )
+        vacuum = st.number_input("Exhaust Vacuum (cm Hg):", min_value=20.0, max_value=80.0, value=50.0)
+
+        # Submit button
+        submitted = st.form_submit_button("Submit")
+
+    # Process the data when the form is submitted
+    if submitted:
+        # Collect data in a list (for logging or further processing)
+        input_data = [temperature, pressure, humidity, vacuum]
+
+
+
+
+
+
+
+
 
     if input_data:
         try:
@@ -90,7 +121,7 @@ def main():
             interpreter = load_tflite_model(MODEL_PATH)
 
             # Parse input data
-            input_data = [float(x.strip()) for x in input_data.split(",")]
+            # input_data = [float(x.strip()) for x in input_data.split(",")]
 
             # Run prediction
             predictions = run_inference(interpreter, input_data)
