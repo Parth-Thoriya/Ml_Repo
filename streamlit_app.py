@@ -105,7 +105,7 @@ def main():
     # Process the data when the form is submitted
     if submitted:
         # Collect data in a list (for logging or further processing)
-        input_data = [temperature, pressure, humidity, vacuum]
+        input_data = [temperature, vacuum,pressure, humidity]
 
 
 
