@@ -101,7 +101,7 @@ def main():
 
         # Submit button
         submitted = st.form_submit_button("Submit")
-
+    input_data = []
     # Process the data when the form is submitted
     if submitted:
         # Collect data in a list (for logging or further processing)
@@ -115,7 +115,7 @@ def main():
 
 
 
-    if input_data:
+    if len(input_data)>0:
         try:
             # Load the local model
             interpreter = load_tflite_model(MODEL_PATH)
